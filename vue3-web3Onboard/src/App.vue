@@ -5,65 +5,67 @@
   </div>
 </template>
 <script setup>
+import { init, useOnboard } from "@web3-onboard/vue";
+import injectedModule from "@web3-onboard/injected-wallets";
+import { computed, onMounted, watch } from "vue";
+import {
+  init as initWidget,
+  render,
+  updateAddressAndProvider,
+} from "woofi-swap-widget";
+import "woofi-swap-widget/style.css";
 
-import { init, useOnboard } from '@web3-onboard/vue'
-import injectedModule from '@web3-onboard/injected-wallets'
-import { computed, onMounted, watch } from 'vue';
-import createSwap from 'woofi-swap-widget'
-import 'woofi-swap-widget/style.css'
-const injected = injectedModule()
+const injected = injectedModule();
 
 init({
   wallets: [injected],
   chains: [
     {
-      id: '0x1',
-      token: 'ETH',
-      label: 'Ethereum Mainnet',
-      rpcUrl: 'https://eth.llamarpc.com'
+      id: "0x1",
+      token: "ETH",
+      label: "Ethereum Mainnet",
+      rpcUrl: "https://eth.llamarpc.com",
     },
     {
       id: 42161,
-      token: 'ARB-ETH',
-      label: 'Arbitrum One',
-      rpcUrl: 'https://rpc.ankr.com/arbitrum'
+      token: "ARB-ETH",
+      label: "Arbitrum One",
+      rpcUrl: "https://rpc.ankr.com/arbitrum",
     },
     {
-      id: '0xa4ba',
-      token: 'ARB',
-      label: 'Arbitrum Nova',
-      rpcUrl: 'https://nova.arbitrum.io/rpc'
-    }
-  ]
-})
+      id: "0xa4ba",
+      token: "ARB",
+      label: "Arbitrum Nova",
+      rpcUrl: "https://nova.arbitrum.io/rpc",
+    },
+  ],
+});
 
-
-const { connectWallet, connectedWallet } = useOnboard()
+const { connectWallet, connectedWallet } = useOnboard();
 
 const address = computed(() => {
   return connectedWallet.value?.accounts?.[0]?.address;
 });
 
 const provider = computed(() => {
-  return connectedWallet.value?.provider
-})
-const { updateAddressAndProvider, render } = createSwap('#swap', {
+  return connectedWallet.value?.provider;
+});
+
+initWidget({
   useUserWallet: true,
-  isRenderByuser: true,
-  connectWallet: () => connectWallet()
-})
+  connectWallet: () => connectWallet(),
+});
 
 watch(address, (val) => {
   if (val) {
-    updateAddressAndProvider(val, provider.value)
+    updateAddressAndProvider(val, provider.value);
   }
-})
+});
 
 onMounted(() => {
-  render()
-})
+  render("#swap");
+});
 </script>
-
 
 <style scoped>
 header {

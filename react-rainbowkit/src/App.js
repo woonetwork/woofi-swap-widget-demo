@@ -3,7 +3,8 @@ import { useAccount, useSigner } from 'wagmi';
 import { useEffect } from 'react'
 
 import { ConnectButton, useConnectModal } from '@rainbow-me/rainbowkit';
-import { updateAddressAndProvider, updateConnectWalletHandler, renderSwapWidget } from './initSwap'
+import { render as renderSwapWidget, updateConnectWallet, updateAddressAndProvider } from 'woofi-swap-widget'
+
 function App() {
   const { address } = useAccount()
   const { openConnectModal } = useConnectModal()
@@ -11,14 +12,13 @@ function App() {
 
   useEffect(() => {
     if (openConnectModal) {
-      updateConnectWalletHandler(openConnectModal)
+      updateConnectWallet(openConnectModal)
     }
   }, [openConnectModal])
 
   useEffect(() => {
     if (address && document && signer?.provider?.provider) {
       updateAddressAndProvider(address, signer?.provider?.provider)
-      renderSwapWidget() // TODO
     }
   }, [address, signer])
 
@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     if (document) {
       console.log('render--')
-      renderSwapWidget()
+      renderSwapWidget('#swap')
     }
   }, [])
 

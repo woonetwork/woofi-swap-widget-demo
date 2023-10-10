@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './initSwap' // before App import
 import App from './App';
-import { initSwap } from './initSwap'
 
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
@@ -27,7 +27,6 @@ const wagmiClient = createClient({
   provider,
 });
 
-initSwap()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

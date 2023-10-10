@@ -1,21 +1,20 @@
 import { useEffect } from 'react'
 import './App.css'
-import createSwap from 'woofi-swap-widget'
+import { init as initSwapWidget, render as renderSwapWidget, updateConnectWallet, updateAddressAndProvider } from 'woofi-swap-widget'
 import 'woofi-swap-widget/style.css'
 import { useEthers } from '@usedapp/core'
-
-const { updateAddressAndProvider, render: renderSwapWidget } = createSwap('#swap', {
+// init option first
+const options = {
   useUserWallet: true,
-  isRenderByUser: false,
-  connectWallet: () => connectWalletHandler()
-})
+}
+initSwapWidget(options)
+
 const ConnectButton = () => {
   const { account, deactivate, activateBrowserWallet } = useEthers()
   // 'account' being undefined means that we are not connected.
   if (account) return <button onClick={() => deactivate()}>Disconnect</button>
   else return <button onClick={() => activateBrowserWallet()}>Connect</button>
 }
-let connectWalletHandler = () => {}
 
 
 function App() {
@@ -23,13 +22,13 @@ function App() {
   
   useEffect(() => {
     if (connectWallet) {
-      connectWalletHandler = connectWallet
+      updateConnectWallet(connectWallet)
     }
   }, [connectWallet])
 
   useEffect(() => {
     if (address && document && currentProvider) {
-      console.log('update address', address, currentProvider)
+      // console.log('update address', address, currentProvider)
       updateAddressAndProvider(address, currentProvider.provider)
     }
   }, [address, currentProvider])
@@ -37,7 +36,8 @@ function App() {
 
   useEffect(() => {
     if (document) {
-      renderSwapWidget()
+      console.log('render--')
+      renderSwapWidget('#swap')
     }
   }, [])
 
