@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './App.css'
-import { init as initSwapWidget, render as renderSwapWidget, updateConnectWallet, updateAddressAndProvider } from 'woofi-swap-widget'
+import { init as initSwapWidget, render as renderSwapWidget, updateConnectWallet, updateAddressAndProvider, updateDisconnectWallet } from 'woofi-swap-widget'
 import 'woofi-swap-widget/style.css'
 import { useEthers } from '@usedapp/core'
 // init option first
@@ -18,13 +18,19 @@ const ConnectButton = () => {
 
 
 function App() {
-  const { account: address, library: currentProvider, activateBrowserWallet: connectWallet } = useEthers();
+  const { account: address, library: currentProvider, activateBrowserWallet: connectWallet, deactivate: disconnectWallet } = useEthers();
   
   useEffect(() => {
     if (connectWallet) {
       updateConnectWallet(connectWallet)
     }
   }, [connectWallet])
+
+  useEffect(() => {
+    if (disconnectWallet) {
+      updateDisconnectWallet(disconnectWallet)
+    }
+  }, [disconnectWallet])
 
   useEffect(() => {
     if (address && document && currentProvider) {
