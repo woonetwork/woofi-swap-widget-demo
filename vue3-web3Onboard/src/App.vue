@@ -41,7 +41,8 @@ init({
   ],
 });
 
-const { connectWallet, connectedWallet } = useOnboard();
+const { connectWallet, connectedWallet, disconnectConnectedWallet } =
+  useOnboard();
 
 const address = computed(() => {
   return connectedWallet.value?.accounts?.[0]?.address;
@@ -54,6 +55,7 @@ const provider = computed(() => {
 initWidget({
   useUserWallet: true,
   connectWallet: () => connectWallet(),
+  disconnectWallet: () => disconnectConnectedWallet(),
 });
 
 watch(address, (val) => {
