@@ -8059,10 +8059,10 @@ with@^7.0.0:
     assert-never "^1.2.1"
     babel-walk "3.0.0-canary-5"
 
-woofi-swap-widget@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.0.4.tgz#1d0f2b13be4d525e57f20dfaf71e38e5b8475386"
-  integrity sha512-szxyOhv4XX22O9btHG7aCdVqK3NDOa/2KWOjN2VOLvmNrjtLb80ypypk6JQ2o1qqxdSPniQr7N30E4a++v4PHA==
+woofi-swap-widget@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.1.0.tgz#d76c238b306a1fa910dcd72138655f0a341b3495"
+  integrity sha512-ykUaFk0qRSprXhniIuiuxlxdJbJr6S2DJlK/SM1C76GyJEp/a4NeD8cCkt6KYimk1C5BHDc9wEdPwLn8CBbgCw==
   dependencies:
     "@kpi/u" "^1.0.16"
     "@web3-onboard/core" "^2.21.1"
