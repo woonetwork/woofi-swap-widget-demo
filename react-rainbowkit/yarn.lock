@@ -15254,10 +15254,10 @@ with@^7.0.0:
     assert-never "^1.2.1"
     babel-walk "3.0.0-canary-5"
 
-woofi-swap-widget@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.1.1.tgz#a7b550d0c9b341c2b3d03739a872c36c8ffa472b"
-  integrity sha512-j32gqiTAQZ8GI/EwhZghFYKOK2CZqOx3WIO/g3/hB6amY8P4HMdGtFP2/YYL7r3tfnSFtMchLBHZ7EKUupjnBw==
+woofi-swap-widget@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.1.3.tgz#83f210229b7f92fcb1fd8bd1d3e3eaf09653ab0a"
+  integrity sha512-Cu9LE3/5qvCR/gMcgcZ2Z2CnIBQaHmOgnBEuTd3u1QWd6Y4AO3AzjXgxkhsrBmUD+Fz7krJAJ7JSiBb5eAyFdA==
   dependencies:
     "@kpi/u" "^1.0.16"
     "@web3-onboard/core" "^2.21.1"
