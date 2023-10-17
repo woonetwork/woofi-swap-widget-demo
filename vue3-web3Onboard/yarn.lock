@@ -11300,10 +11300,10 @@ wildcard@^2.0.0:
   resolved "https://registry.npmmirror.com/wildcard/-/wildcard-2.0.1.tgz#5ab10d02487198954836b6349f74fff961e10f67"
   integrity sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==
 
-woofi-swap-widget@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.1.4.tgz#5965f65a828a6daca57f113c5abbec54f1b6a2ab"
-  integrity sha512-lxY2ignt4mNCOaDy1JjyW5hfTJAyjiFnWktQoHaLP+lUlAjkr2dbSOzrCNiw3JOwrSkIY6jkMwb0qeK7Gn/+lA==
+woofi-swap-widget@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.1.5.tgz#701af1fcc82c3879c186937fbe221255c049da7c"
+  integrity sha512-F1bXsXAwaTaKcH4Kv7PY9qBWqSMXUdSGU9UFICFmyu2ogj7XPKcnltT3WybjGWqZ5SlQC7nBcqCALEf5oAR5fg==
   dependencies:
     "@kpi/u" "^1.0.16"
     "@web3-onboard/core" "^2.21.1"
