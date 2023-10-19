@@ -7722,10 +7722,10 @@ wif@^2.0.6:
   dependencies:
     bs58check "<3.0.0"
 
-woofi-swap-widget@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.2.6.tgz#75f89f9a38cc993d83581b25c20c9798fda08aaf"
-  integrity sha512-lx7FNYZOQeRetKiqbUcGWJwKvNpVGj/kKJSpQTmnXfqIv4QRu4pTbTccvTY6blNbAnvFEx9b2iY/Lxl3Yazddg==
+woofi-swap-widget@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/woofi-swap-widget/-/woofi-swap-widget-0.2.8.tgz#b230dbe306cc55c923d011fa86bbd49d43673caa"
+  integrity sha512-do6YG7+6ByuEphBhfsi5NIBznBm/hwskb4oedgEPvEaatVe2k/r/fVJk6RC+EwbWXPNh7oC+VEcx54fDgn3UAg==
   dependencies:
     "@kpi/u" "^1.0.16"
     "@web3-onboard/core" "^2.21.1"
