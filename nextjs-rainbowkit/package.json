@@ -17,7 +17,7 @@
     "react-dom": "^18.2.0",
     "viem": "~1.19.0",
     "wagmi": "~1.4.3",
-    "woofi-swap-widget": "^0.2.38"
+    "woofi-swap-widget": "^0.2.40"
   },
   "devDependencies": {
     "@types/node": "^18.16.12",
