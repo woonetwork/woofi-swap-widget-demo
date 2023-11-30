@@ -13,7 +13,7 @@
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
     "wagmi": "0.12.1",
-    "woofi-swap-widget": "^0.2.40"
+    "woofi-swap-widget": "^0.2.41"
   },
   "scripts": {
     "dev": "react-app-rewired start",
