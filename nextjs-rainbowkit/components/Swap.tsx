@@ -44,7 +44,7 @@ export function Swap() {
 
   useEffect(() => {
     if (address && document && provider) {
-      updateAddressAndProvider(address, provider);
+      updateAddressAndProvider(address, provider as any);
     }
   }, [address, provider]);
 
