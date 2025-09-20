@@ -27,8 +27,8 @@ importers:
         specifier: ^2.17.1
         version: 2.17.1(@tanstack/query-core@5.89.0)(@tanstack/react-query@5.89.0(react@19.1.1))(@types/react@19.1.13)(bufferutil@4.0.9)(react@19.1.1)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.37.7(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
       woofi-swap-widget-kit:
-        specifier: ^0.0.1
-        version: 0.0.1(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        specifier: ^0.0.2
+        version: 0.0.2(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
     devDependencies:
       '@eslint/js':
         specifier: ^9.35.0
@@ -4542,8 +4542,8 @@ packages:
   wif@5.0.0:
     resolution: {integrity: sha512-iFzrC/9ne740qFbNjTZ2FciSRJlHIXoxqk/Y5EnE08QOXu1WjJyCCswwDTYbohAOEnlCtLaAAQBhyaLRFh2hMA==}
 
-  woofi-swap-widget-kit@0.0.1:
-    resolution: {integrity: sha512-yzCMuMmzva2RNKmYrJ/HcHtVz0WY1+igHKwn3OtJKLkl4tTWwbOEVH0lnT3Lcq7xtwQi2oZvIcL9CXBMQAQMnA==}
+  woofi-swap-widget-kit@0.0.2:
+    resolution: {integrity: sha512-XhXV4yWdH3Z1iHRf1TA6D5ddmNH9S/1ZadNkIxa8FzWWPvCYAw7KLomZ76XGB/F7nnoKpo1EQmn+u690T0aozw==}
 
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
@@ -6868,18 +6868,18 @@ snapshots:
 
   '@types/bn.js@5.2.0':
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
 
   '@types/cacheable-request@6.0.3':
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
       '@types/responselike': 1.0.3
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6893,7 +6893,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
 
   '@types/lodash@4.17.20': {}
 
@@ -6923,7 +6923,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
 
   '@types/secp256k1@4.0.6':
     dependencies:
@@ -6935,7 +6935,7 @@ snapshots:
 
   '@types/ws@7.4.7':
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 24.5.2
 
   '@types/ws@8.18.1':
     dependencies:
@@ -7815,7 +7815,7 @@ snapshots:
   axios@1.7.4:
     dependencies:
       follow-redirects: 1.15.11
-      form-data: 4.0.0
+      form-data: 4.0.4
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -11071,7 +11071,7 @@ snapshots:
     dependencies:
       bs58check: 4.0.0
 
-  woofi-swap-widget-kit@0.0.1(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  woofi-swap-widget-kit@0.0.2(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@amplitude/analytics-browser': 2.24.1
       '@coral-xyz/anchor': 0.29.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
