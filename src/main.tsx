@@ -25,7 +25,7 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const config = getDefaultConfig({
-  appName: "Woofi Swap Widget Demo",
+  appName: "WooFi Swap Widget Demo",
   projectId: "YOUR_PROJECT_ID", // You need to get your own project id from walletconnect.com
   chains: [mainnet, polygon, optimism, arbitrum, base, bsc, avalanche, fantom, mantle, zksync, linea, sonic, berachain, merlin],
   ssr: true, // If your dApp uses server side rendering (SSR)

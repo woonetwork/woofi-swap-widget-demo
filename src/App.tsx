@@ -13,7 +13,7 @@ function App() {
   return (
     <div> 
       <header className="header">
-        <h1>Woofi Swap Widget Demo (React + wagmi + rainbowkit)</h1>
+        <h1>WooFi Swap Widget Demo (React + wagmi + rainbowkit)</h1>
         <div className="wallet-controls">
           <ConnectButton />
         </div>
