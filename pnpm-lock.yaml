@@ -61,7 +61,7 @@ importers:
         specifier: ^8.43.0
         version: 8.44.0(eslint@9.36.0)(typescript@5.8.3)
       vite:
-        specifier: ^7.1.6
+        specifier: ^7.1.5
         version: 7.1.6(@types/node@24.5.2)
       vite-plugin-node-polyfills:
         specifier: ^0.24.0
