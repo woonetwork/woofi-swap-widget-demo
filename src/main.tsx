@@ -6,11 +6,11 @@ import "./index.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { 
-  mainnet, 
-  polygon, 
-  optimism, 
-  arbitrum, 
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
   base,
   bsc,
   avalanche,
@@ -21,14 +21,29 @@ import {
   sonic,
   berachain,
   merlin,
- } from "wagmi/chains";
+} from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const config = getDefaultConfig({
   appName: "WooFi Swap Widget Demo",
-  projectId: "YOUR_PROJECT_ID", // You need to get your own project id from walletconnect.com
-  chains: [mainnet, polygon, optimism, arbitrum, base, bsc, avalanche, fantom, mantle, zksync, linea, sonic, berachain, merlin],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  projectId: "e7b04c22de006e0fc7cef5a00cb7fac9",
+  chains: [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    bsc,
+    avalanche,
+    fantom,
+    mantle,
+    zksync,
+    linea,
+    sonic,
+    berachain,
+    merlin,
+  ],
+  ssr: true,
 });
 
 const queryClient = new QueryClient();
