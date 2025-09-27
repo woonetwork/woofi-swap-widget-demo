@@ -13,12 +13,46 @@
   margin-bottom: 2rem;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .app-header h1 {
   margin: 0;
   font-size: 1.5rem;
-  margin-right: 2rem;
   color: aliceblue;
   font-weight: bold;
+}
+
+.github-link {
+  color: #24292e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background-color: #fafbfc;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.github-link:hover {
+  background-color: #f3f4f6;
+  color: #0366d6;
+  border-color: #ccd1d5;
+}
+
+.github-link svg {
+  margin-right: 3px;
+  color: #24292e;
+}
+
+.github-link:hover svg {
+  color: #0366d6;
 }
 
 .wallet-controls {
