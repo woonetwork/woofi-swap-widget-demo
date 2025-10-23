@@ -6,13 +6,13 @@ import {
   useSwitchChain,
   useWalletClient,
 } from "wagmi";
+import { useEffect, useRef } from "react";
 import { WooFiSwapWidgetReact } from "woofi-swap-widget-kit/react";
 import "woofi-swap-widget-kit/style.css";
 import "./App.css";
 
 const SUPPORTED_CHAINS = [
   { id: 1, name: "Ethereum" },
-  { id: 56, name: "BNB Chain" },
   { id: 137, name: "Polygon" },
   { id: 42161, name: "Arbitrum" },
   { id: 10, name: "Optimism" },
@@ -36,6 +36,18 @@ function App() {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
 
+  const cachedProviderRef = useRef(evmProvider);
+
+  useEffect(() => {
+    if (evmProvider && evmProvider !== cachedProviderRef.current) {
+      cachedProviderRef.current = evmProvider;
+    } else if (!isConnected && cachedProviderRef.current !== undefined) {
+      cachedProviderRef.current = undefined;
+    }
+  }, [evmProvider, isConnected]);
+
+  const stableEvmProvider = evmProvider || cachedProviderRef.current;
+  
   return (
     <div>
       <header className="app-header">
@@ -93,7 +105,7 @@ function App() {
       <main>
         <WooFiSwapWidgetReact
           brokerAddress="0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75"
-          evmProvider={evmProvider}
+          evmProvider={stableEvmProvider}
           currentChain={chainId}
           onConnectWallet={openConnectModal}
           onChainSwitch={(targetChain) => {
