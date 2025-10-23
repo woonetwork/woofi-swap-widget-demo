@@ -1,13 +1,39 @@
-import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
-import { useChainId, useSwitchChain, useWalletClient } from "wagmi";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import {
+  useAccount,
+  useChainId,
+  useDisconnect,
+  useSwitchChain,
+  useWalletClient,
+} from "wagmi";
 import { WooFiSwapWidgetReact } from "woofi-swap-widget-kit/react";
 import "woofi-swap-widget-kit/style.css";
 import "./App.css";
 
+const SUPPORTED_CHAINS = [
+  { id: 1, name: "Ethereum" },
+  { id: 56, name: "BNB Chain" },
+  { id: 137, name: "Polygon" },
+  { id: 42161, name: "Arbitrum" },
+  { id: 10, name: "Optimism" },
+  { id: 43114, name: "Avalanche" },
+  { id: 8453, name: "Base" },
+  { id: 5000, name: "Mantle" },
+  { id: 324, name: "ZkSync" },
+  { id: 56, name: "BNB Chain" },
+  { id: 59144, name: "Linea" },
+  { id: 146, name: "Sonic" },
+  { id: 80094, name: "Berachain" },
+  { id: 4200, name: "Merlin" },
+  { id: 999, name: "HyperEVM" },
+];
+
 function App() {
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
+  const { disconnect } = useDisconnect();
   const { data: evmProvider } = useWalletClient();
+  const { address, isConnected } = useAccount();
   const chainId = useChainId();
 
   return (
@@ -34,12 +60,39 @@ function App() {
           </a>
         </div>
         <div className="wallet-controls">
-          <ConnectButton />
+          {!isConnected ? (
+            <button className="connect-button" onClick={openConnectModal}>
+              Connect Wallet
+            </button>
+          ) : (
+            <div className="wallet-info">
+              <button className="address-button" onClick={() => disconnect()}>
+                <span className="address-text">
+                  {address?.slice(0, 6)}...{address?.slice(-4)}
+                </span>
+                <span className="disconnect-hint">(disconnect)</span>
+              </button>
+            </div>
+          )}
+
+          {isConnected && (
+            <select
+              className="chain-selector"
+              value={chainId}
+              onChange={(e) => switchChain({ chainId: Number(e.target.value) })}
+            >
+              {SUPPORTED_CHAINS.map((chain) => (
+                <option key={chain.id} value={chain.id}>
+                  {chain.name}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       </header>
       <main>
         <WooFiSwapWidgetReact
-          brokerAddress='0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75'
+          brokerAddress="0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75"
           evmProvider={evmProvider}
           currentChain={chainId}
           onConnectWallet={openConnectModal}

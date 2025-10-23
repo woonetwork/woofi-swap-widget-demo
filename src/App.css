@@ -58,6 +58,119 @@
 .wallet-controls {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.connect-button {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  letter-spacing: 0.3px;
+}
+
+.connect-button:hover {
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+}
+
+.connect-button:active {
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.address-button {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "SF Mono", "Courier New", monospace;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.address-button:hover {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.address-button:hover .disconnect-hint {
+  opacity: 1;
+}
+
+.address-button:active {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.address-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.disconnect-hint {
+  bottom: 0.2rem;
+  left: 0;
+  right: 0;
+  position: absolute;
+  font-size: 0.5rem;
+  font-weight: 500;
+  opacity: 0.5;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.chain-selector {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  min-width: 150px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236366f1' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2.5rem;
+}
+
+.chain-selector:hover {
+  border-color: #6366f1;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+}
+
+.chain-selector:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.chain-selector option {
+  background: white;
+  color: #1f2937;
+  padding: 0.5rem;
 }
 
 main {
@@ -107,6 +220,18 @@ main {
   .wallet-controls {
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .connect-button,
+  .address-button,
+  .chain-selector {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .chain-selector {
+    min-width: 130px;
   }
 
   /* Main content */
