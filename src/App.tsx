@@ -39,6 +39,7 @@ function App() {
       </header>
       <main>
         <WooFiSwapWidgetReact
+          brokerAddress='0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75'
           evmProvider={evmProvider}
           currentChain={chainId}
           onConnectWallet={openConnectModal}

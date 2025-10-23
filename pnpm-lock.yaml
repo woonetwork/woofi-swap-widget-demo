@@ -27,8 +27,8 @@ importers:
         specifier: ^2.17.1
         version: 2.17.1(@tanstack/query-core@5.89.0)(@tanstack/react-query@5.89.0(react@19.1.1))(@types/react@19.1.13)(bufferutil@4.0.9)(react@19.1.1)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.37.7(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
       woofi-swap-widget-kit:
-        specifier: ^0.0.11
-        version: 0.0.11(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        specifier: ^0.0.23
+        version: 0.0.23(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
     devDependencies:
       '@eslint/js':
         specifier: ^9.35.0
@@ -3088,9 +3088,6 @@ packages:
   long@5.3.2:
     resolution: {integrity: sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==}
 
-  lottie-web@5.13.0:
-    resolution: {integrity: sha512-+gfBXl6sxXMPe8tKQm7qzLnUy5DUPJPKIyRHwtpCpyUEYjHYRJC/5gjUvdkuO2c3JllrPtHXH5UJJK8LRYl5yQ==}
-
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
@@ -4539,8 +4536,8 @@ packages:
   wif@5.0.0:
     resolution: {integrity: sha512-iFzrC/9ne740qFbNjTZ2FciSRJlHIXoxqk/Y5EnE08QOXu1WjJyCCswwDTYbohAOEnlCtLaAAQBhyaLRFh2hMA==}
 
-  woofi-swap-widget-kit@0.0.11:
-    resolution: {integrity: sha512-Zdr0O4Q9s5J1fgeqpYSgcFQEUclrUBeLpFYecee8TfwW90m1WahKXCaH0p8lJ6V7xZmlIqyOnSHwA2wyOtGwKA==}
+  woofi-swap-widget-kit@0.0.23:
+    resolution: {integrity: sha512-JVjc20GuE+tcDS5cqhIlEyuoA9ml5RsBKyg9Hjj3y2ZYzsmleqbt+dU1k79Ly8rUG2JDrQVyZLd+ZkFrNaPS2w==}
 
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
@@ -9377,8 +9374,6 @@ snapshots:
 
   long@5.3.2: {}
 
-  lottie-web@5.13.0: {}
-
   lower-case@2.0.2:
     dependencies:
       tslib: 2.8.1
@@ -11066,7 +11061,7 @@ snapshots:
     dependencies:
       bs58check: 4.0.0
 
-  woofi-swap-widget-kit@0.0.11(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  woofi-swap-widget-kit@0.0.23(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@amplitude/analytics-browser': 2.24.1
       '@coral-xyz/anchor': 0.29.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
@@ -11085,7 +11080,6 @@ snapshots:
       dayjs: 1.11.18
       element-ui: 2.15.14(vue@2.7.16)
       ethers: 5.8.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      lottie-web: 5.13.0
       viem: 2.37.7(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       vue: 2.7.16
       vuex: 3.6.2(vue@2.7.16)
