@@ -27,8 +27,8 @@ importers:
         specifier: ^2.17.1
         version: 2.17.1(@tanstack/query-core@5.89.0)(@tanstack/react-query@5.89.0(react@19.1.1))(@types/react@19.1.13)(bufferutil@4.0.9)(react@19.1.1)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.37.7(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
       woofi-swap-widget-kit:
-        specifier: ^0.0.24
-        version: 0.0.24(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        specifier: ^0.0.25
+        version: 0.0.25(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76)
     devDependencies:
       '@eslint/js':
         specifier: ^9.35.0
@@ -4536,8 +4536,8 @@ packages:
   wif@5.0.0:
     resolution: {integrity: sha512-iFzrC/9ne740qFbNjTZ2FciSRJlHIXoxqk/Y5EnE08QOXu1WjJyCCswwDTYbohAOEnlCtLaAAQBhyaLRFh2hMA==}
 
-  woofi-swap-widget-kit@0.0.24:
-    resolution: {integrity: sha512-N3i857dkmpxvyIqVqTF0OKdFin7Sx6xjkedf1iE6DhLdqTi8cGeSIxPNGDP4pQbCM8bepkf9aOkkxpPjD5A5Zw==}
+  woofi-swap-widget-kit@0.0.25:
+    resolution: {integrity: sha512-aGsU8esnst5b4youbxpvGdFxNHIq6MBV9+HO9AW7zNTLcHffW8tML6xv8nL0WtHpWZMyLhLROGNWCav2cg1ftg==}
 
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
@@ -11061,7 +11061,7 @@ snapshots:
     dependencies:
       bs58check: 4.0.0
 
-  woofi-swap-widget-kit@0.0.24(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
+  woofi-swap-widget-kit@0.0.25(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.25.76):
     dependencies:
       '@amplitude/analytics-browser': 2.24.1
       '@coral-xyz/anchor': 0.29.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
