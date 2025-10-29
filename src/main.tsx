@@ -21,9 +21,24 @@ import {
   sonic,
   berachain,
   merlin,
-  hychain
 } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { type Chain } from 'viem'
+
+const hyperEvmChain: Chain = {
+  id: 999,
+  name: 'HyperEVM',
+  nativeCurrency: {
+    name: 'hype',
+    symbol: 'HYPE',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ['https://hyperliquid.drpc.org'] },
+  },
+  testnet: false,
+};
+
 
 const config = getDefaultConfig({
   appName: "WooFi Swap Widget Demo",
@@ -43,7 +58,7 @@ const config = getDefaultConfig({
     sonic,
     berachain,
     merlin,
-    hychain
+    hyperEvmChain
   ],
   ssr: true,
 });
