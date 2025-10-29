@@ -21,6 +21,7 @@ import {
   sonic,
   berachain,
   merlin,
+  hychain
 } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -42,6 +43,7 @@ const config = getDefaultConfig({
     sonic,
     berachain,
     merlin,
+    hychain
   ],
   ssr: true,
 });
