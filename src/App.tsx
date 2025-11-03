@@ -6,7 +6,7 @@ import {
   useSwitchChain,
   useWalletClient,
 } from "wagmi";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WooFiSwapWidgetReact } from "woofi-swap-widget-kit/react";
 import "woofi-swap-widget-kit/style.css";
 import "./App.css";
@@ -26,6 +26,7 @@ const SUPPORTED_CHAINS = [
   { id: 80094, name: "Berachain" },
   { id: 4200, name: "Merlin" },
   { id: 999, name: "HyperEVM" },
+  { id: 100000000, name: "Solana", key: 'solana' } // fake chain id for Solana selection
 ];
 
 function App() {
@@ -34,9 +35,15 @@ function App() {
   const { disconnect } = useDisconnect();
   const { data: evmProvider } = useWalletClient();
   const { address, isConnected } = useAccount();
+  const [currentChain, setCurrentChain] = useState<number | string | null>(null);
   const chainId = useChainId();
 
+  const [solanaAddress, setSolanaAddress] = useState<string | null>(null);
+  const [solanaConnected, setSolanaConnected] = useState(false);
+
+  // Cache refs for both EVM and Solana providers
   const cachedProviderRef = useRef(evmProvider);
+  const cachedSolanaProviderRef = useRef<any>(null);
 
   useEffect(() => {
     if (evmProvider && evmProvider !== cachedProviderRef.current) {
@@ -46,13 +53,92 @@ function App() {
     }
   }, [evmProvider, isConnected]);
 
+  // Auto-connect Solana wallet on component mount
+  useEffect(() => {
+    const tryAutoConnectSolana = async () => {
+      try {
+        const solana = (window as any).solana;
+        if (!solana?.isPhantom) {
+          return;
+        }
+        const response = await solana.connect({ onlyIfTrusted: true });
+        const publicKey = response.publicKey.toString();
+        setSolanaAddress(publicKey);
+        setSolanaConnected(true);
+        // Cache the Solana provider
+        cachedSolanaProviderRef.current = solana;
+        console.log("Auto-connected Solana wallet:", publicKey);
+      } catch (err) {
+        console.error("Failed to auto-connect Solana wallet:", err);
+      }
+    };
+    tryAutoConnectSolana();
+  }, []);
+
+  // Handle Solana wallet connection
+  const handleSolanaConnect = async () => {
+    try {
+      const solana = (window as any).solana;
+      if (!solana?.isPhantom) {
+        alert("Please install Phantom wallet");
+        return;
+      }
+      const response = await solana.connect();
+      const publicKey = response.publicKey.toString();
+      setSolanaAddress(publicKey);
+      setSolanaConnected(true);
+      // Cache the Solana provider
+      cachedSolanaProviderRef.current = solana;
+      console.log("Connected Solana wallet:", publicKey);
+    } catch (err) {
+      console.error("Failed to connect Solana wallet:", err);
+    }
+  };
+
+  // Handle Solana wallet disconnection
+  const handleSolanaDisconnect = async () => {
+    try {
+      const solana = (window as any).solana;
+      if (solana?.isPhantom) {
+        await solana.disconnect();
+      }
+      setSolanaAddress(null);
+      setSolanaConnected(false);
+      // Clear the cached Solana provider
+      cachedSolanaProviderRef.current = null;
+      console.log("Disconnected Solana wallet");
+    } catch (err) {
+      console.error("Failed to disconnect Solana wallet:", err);
+    }
+  };
+
+  const onSwitchChain = (targetChain: any) => {
+    if (targetChain.key === 'solana') {
+      setCurrentChain(targetChain.key);
+      return;
+    } else {
+      setCurrentChain(null); // use null to indicate EVM chain
+    }
+    if (targetChain.chainId) {
+      switchChain({ chainId: Number(targetChain.chainId) });
+    }
+  }
+
   const stableEvmProvider = evmProvider || cachedProviderRef.current;
-  
+  const stableSolanaProvider = cachedSolanaProviderRef.current;
+  const stableCurrentChain = currentChain || chainId;
+  const selectorCurrentChain = (() => {
+    if (typeof stableCurrentChain === 'string') {
+      return SUPPORTED_CHAINS.find(chain => chain.key === stableCurrentChain)?.id;
+    }
+    return stableCurrentChain
+  })()
+
   return (
     <div>
       <header className="app-header">
         <div className="header-left">
-          <h1>WooFi Swap Widget Demo (React + wagmi + rainbowkit)</h1>
+          <h1>WooFi Swap Widget Demo (React.js)</h1>
           <a
             href="https://github.com/woonetwork/woofi-swap-widget-demo"
             target="_blank"
@@ -72,46 +158,88 @@ function App() {
           </a>
         </div>
         <div className="wallet-controls">
-          {!isConnected ? (
-            <button className="connect-button" onClick={openConnectModal}>
-              Connect Wallet
-            </button>
-          ) : (
-            <div className="wallet-info">
-              <button className="address-button" onClick={() => disconnect()}>
+          <select
+            className="chain-selector"
+            value={selectorCurrentChain}
+            onChange={(e) => {
+              const chainId = Number(e.target.value);
+              const selectedChain = SUPPORTED_CHAINS.find(
+                (chain) => chain.id === chainId
+              );
+              if (selectedChain) {
+                onSwitchChain(selectedChain);
+              }
+            }}
+            title="Select blockchain network"
+          >
+            {SUPPORTED_CHAINS.map((chain) => (
+              <option key={chain.id} value={chain.id}>
+                {chain.name}
+              </option>
+            ))}
+          </select>
+
+          {/* EVM Wallet Button */}
+          <div className="wallet-button-group">
+            {!isConnected ? (
+              <button
+                className="connect-button evm-button"
+                onClick={openConnectModal}
+                title="Connect EVM wallet"
+              >
+                EVM Wallet
+              </button>
+            ) : (
+              <button
+                className="address-button evm-button"
+                onClick={() => disconnect()}
+                title="Click to disconnect EVM wallet"
+              >
                 <span className="address-text">
                   {address?.slice(0, 6)}...{address?.slice(-4)}
                 </span>
                 <span className="disconnect-hint">(disconnect)</span>
               </button>
-            </div>
-          )}
+            )}
+          </div>
 
-          {isConnected && (
-            <select
-              className="chain-selector"
-              value={chainId}
-              onChange={(e) => switchChain({ chainId: Number(e.target.value) })}
-            >
-              {SUPPORTED_CHAINS.map((chain) => (
-                <option key={chain.id} value={chain.id}>
-                  {chain.name}
-                </option>
-              ))}
-            </select>
-          )}
+          {/* Solana Wallet Button */}
+          <div className="wallet-button-group">
+            {!solanaConnected ? (
+              <button
+                className="connect-button solana-button"
+                onClick={handleSolanaConnect}
+                title="Connect Solana wallet"
+              >
+                Solana Wallet
+              </button>
+            ) : (
+              <button
+                className="address-button solana-button"
+                onClick={handleSolanaDisconnect}
+                title="Click to disconnect Solana wallet"
+              >
+                <span className="address-text">
+                  {solanaAddress?.slice(0, 6)}...{solanaAddress?.slice(-4)}
+                </span>
+                <span className="disconnect-hint">(disconnect)</span>
+              </button>
+            )}
+          </div>
         </div>
       </header>
       <main>
         <WooFiSwapWidgetReact
           brokerAddress="0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75"
           evmProvider={stableEvmProvider}
-          currentChain={chainId}
+          solanaProvider={stableSolanaProvider}
+          currentChain={stableCurrentChain}
           onConnectWallet={openConnectModal}
           onChainSwitch={(targetChain) => {
-            if (targetChain.chainId) {
-              switchChain({ chainId: Number(targetChain.chainId) });
-            }
+            onSwitchChain(targetChain);
+          }}
+          config={{
+            enableSolana: true,
           }}
         />
       </main>
