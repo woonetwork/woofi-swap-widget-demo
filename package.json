@@ -16,7 +16,7 @@
     "react-dom": "^19.1.1",
     "viem": "^2.37.7",
     "wagmi": "^2.17.1",
-    "woofi-swap-widget-kit": "^0.0.29"
+    "woofi-swap-widget-kit": "^0.0.30"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
