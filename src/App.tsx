@@ -134,7 +134,7 @@ function App() {
     return stableCurrentChain
   })()
 
-  const brokerAddress = "0xd51c5283b8727206bf9be2b2db4e5673efaf519c1";
+  const brokerAddress = "0xd51c5283b8727206bf9be2b2db4e5673efaf519c";
   console.log('brokerAddress: ', brokerAddress);
 
   return (
