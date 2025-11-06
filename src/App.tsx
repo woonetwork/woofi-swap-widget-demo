@@ -134,6 +134,9 @@ function App() {
     return stableCurrentChain
   })()
 
+  const brokerAddress = "0xd51c5283b8727206bf9be2b2db4e5673efaf519c1";
+  console.log('brokerAddress: ', brokerAddress);
+
   return (
     <div>
       <header className="app-header">
@@ -230,7 +233,7 @@ function App() {
       </header>
       <main>
         <WooFiSwapWidgetReact
-          brokerAddress="0x47fc45CEBFc47Cef07a09A98405B6EBAeF00ef75"
+          brokerAddress={brokerAddress}
           evmProvider={stableEvmProvider}
           solanaProvider={stableSolanaProvider}
           currentChain={stableCurrentChain}
