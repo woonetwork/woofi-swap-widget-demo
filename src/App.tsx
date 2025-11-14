@@ -19,13 +19,13 @@ const SUPPORTED_CHAINS = [
   { id: 43114, name: "Avalanche" },
   { id: 8453, name: "Base" },
   { id: 5000, name: "Mantle" },
-  { id: 324, name: "ZkSync" },
+  // { id: 324, name: "ZkSync" },
   { id: 56, name: "BNB Chain" },
-  { id: 59144, name: "Linea" },
+  // { id: 59144, name: "Linea" },
   { id: 146, name: "Sonic" },
   { id: 80094, name: "Berachain" },
-  { id: 4200, name: "Merlin" },
-  { id: 999, name: "HyperEVM" },
+  // { id: 4200, name: "Merlin" },
+  // { id: 999, name: "HyperEVM" },
   { id: 100000000, name: "Solana", key: 'solana' } // fake chain id for Solana selection
 ];
 
@@ -134,7 +134,7 @@ function App() {
     return stableCurrentChain
   })()
 
-  const brokerAddress = "0xd51c5283b8727206bf9be2b2db4e5673efaf519c";
+  const brokerAddress = "0xfBe3AeDa720f923726b1108A0bB82140f6BaBd1A";
   console.log('brokerAddress: ', brokerAddress);
 
   return (
@@ -243,6 +243,10 @@ function App() {
           }}
           config={{
             enableSolana: true,
+            enableLinea: false,
+            enableMerlin: false,
+            enableHyperevm: false,
+            enableZksync: false,
           }}
         />
       </main>
