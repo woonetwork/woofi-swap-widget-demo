@@ -39,6 +39,20 @@ const hyperEvmChain: Chain = {
   testnet: false,
 };
 
+const monadEvmChain: Chain = {
+  id: 143,
+  name: 'Monad',
+  nativeCurrency: {
+    name: 'mon',
+    symbol: 'MON',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: { http: ['https://rpc3.monad.xyz/'] },
+  },
+  testnet: false,
+};
+
 
 const config = getDefaultConfig({
   appName: "WooFi Swap Widget Demo",
@@ -58,7 +72,8 @@ const config = getDefaultConfig({
     sonic,
     berachain,
     merlin,
-    hyperEvmChain
+    hyperEvmChain,
+    monadEvmChain
   ],
   ssr: true,
 });

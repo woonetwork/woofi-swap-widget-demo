@@ -26,7 +26,8 @@ const SUPPORTED_CHAINS = [
   { id: 80094, name: "Berachain" },
   // { id: 4200, name: "Merlin" },
   // { id: 999, name: "HyperEVM" },
-  { id: 100000000, name: "Solana", key: 'solana' } // fake chain id for Solana selection
+  { id: 143, name: "Monad" },
+  { id: 100000000, name: "Solana", key: "solana" }, // fake chain id for Solana selection
 ];
 
 function App() {
@@ -35,7 +36,9 @@ function App() {
   const { disconnect } = useDisconnect();
   const { data: evmProvider } = useWalletClient();
   const { address, isConnected } = useAccount();
-  const [currentChain, setCurrentChain] = useState<number | string | null>(null);
+  const [currentChain, setCurrentChain] = useState<number | string | null>(
+    null
+  );
   const chainId = useChainId();
 
   const [solanaAddress, setSolanaAddress] = useState<string | null>(null);
@@ -113,7 +116,7 @@ function App() {
   };
 
   const onSwitchChain = (targetChain: any) => {
-    if (targetChain.key === 'solana') {
+    if (targetChain.key === "solana") {
       setCurrentChain(targetChain.key);
       return;
     } else {
@@ -122,20 +125,21 @@ function App() {
     if (targetChain.chainId) {
       switchChain({ chainId: Number(targetChain.chainId) });
     }
-  }
+  };
 
   const stableEvmProvider = evmProvider || cachedProviderRef.current;
   const stableSolanaProvider = cachedSolanaProviderRef.current;
   const stableCurrentChain = currentChain || chainId;
   const selectorCurrentChain = (() => {
-    if (typeof stableCurrentChain === 'string') {
-      return SUPPORTED_CHAINS.find(chain => chain.key === stableCurrentChain)?.id;
+    if (typeof stableCurrentChain === "string") {
+      return SUPPORTED_CHAINS.find((chain) => chain.key === stableCurrentChain)
+        ?.id;
     }
-    return stableCurrentChain
-  })()
+    return stableCurrentChain;
+  })();
 
   const brokerAddress = "0xfBe3AeDa720f923726b1108A0bB82140f6BaBd1A";
-  console.log('brokerAddress: ', brokerAddress);
+  console.log("brokerAddress: ", brokerAddress);
 
   return (
     <div>
