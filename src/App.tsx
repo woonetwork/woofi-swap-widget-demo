@@ -11,26 +11,8 @@ import { WooFiSwapWidgetReact } from "woofi-swap-widget-kit/react";
 import "woofi-swap-widget-kit/style.css";
 import "./App.css";
 
-const SUPPORTED_CHAINS = [
-  { id: 1, name: "Ethereum" },
-  { id: 137, name: "Polygon" },
-  { id: 42161, name: "Arbitrum" },
-  { id: 10, name: "Optimism" },
-  { id: 43114, name: "Avalanche" },
-  { id: 8453, name: "Base" },
-  { id: 5000, name: "Mantle" },
-  // { id: 324, name: "ZkSync" },
-  { id: 56, name: "BNB Chain" },
-  // { id: 59144, name: "Linea" },
-  { id: 146, name: "Sonic" },
-  { id: 80094, name: "Berachain" },
-  // { id: 4200, name: "Merlin" },
-  // { id: 999, name: "HyperEVM" },
-  { id: 143, name: "Monad" },
-  { id: 100000000, name: "Solana", key: "solana" }, // fake chain id for Solana selection
-];
-
-function App() {
+function App(props: { chains: readonly any[] }) {
+  const { chains } = props;
   const { openConnectModal } = useConnectModal();
   const { switchChain } = useSwitchChain();
   const { disconnect } = useDisconnect();
@@ -47,6 +29,16 @@ function App() {
   // Cache refs for both EVM and Solana providers
   const cachedProviderRef = useRef(evmProvider);
   const cachedSolanaProviderRef = useRef<any>(null);
+
+  const SUPPORTED_CHAINS = chains.map((chain) => ({
+    id: chain.id,
+    name: chain.name,
+    key: chain.name
+  }));
+
+  SUPPORTED_CHAINS.push(
+    { id: 100000000, name: "Solana", key: "solana" }
+  );
 
   useEffect(() => {
     if (evmProvider && evmProvider !== cachedProviderRef.current) {
